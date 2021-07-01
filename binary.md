@@ -1,9 +1,9 @@
 ## 백준 12015 가장 긴 증가하는 부분 수열2
 
-긴 증가하는 부분 수열1과 같이 dp로 풀면 시간초과가 뜬다.
-주어진 수열의 폭이 넓기 때문. 주어진 수열에서 반복문을 돌면서 스택에 넣어준다.
-스택의 마지막 원소보다 i가 크다면 append를 해주고 아니라면 함수를 호출하여
-이분탐색으로 스택에 대체할 위치를 찾아준다. 결과 수열은 비록 오름차순이 아닐 수 있지만 수열의 길이만 구하면 되는 것이기 때문에 다음과 같은 방식으로 구현.
+긴 증가하는 부분 수열1과 같이 dp로 풀면 시간초과가 뜬다.  
+주어진 수열의 폭이 넓기 때문. 주어진 수열에서 반복문을 돌면서 스택에 넣어준다.  
+스택의 마지막 원소보다 i가 크다면 append를 해주고 아니라면 함수를 호출하여  
+이분탐색으로 스택에 대체할 위치를 찾아준다. 결과 수열은 비록 예상하던 수들의   집합이 아닐 수 있지만 수열의 길이만 구하면 되는 것이기 때문에 다음과 같은 방식으로 구현.  
 
     import sys
 
@@ -33,9 +33,9 @@
 
     print(len(stack)-1)
 
-아래와 같이 bisect를 이용하여 구현 가능하며 속도도 1/3로 빠르다. 
-bisect_left(literable, value) : 왼쪽 인덱스를 구하기
-bisect_right(literable, value) : 오른쪽 인덱스 구하기
+아래와 같이 bisect를 이용하여 구현 가능하며 속도도 1/3로 빠르다.   
+bisect_left(literable, value) : 왼쪽 인덱스를 구하기  
+bisect_right(literable, value) : 오른쪽 인덱스 구하기  
 
     import sys
     from bisect import bisect_left
@@ -51,7 +51,7 @@ bisect_right(literable, value) : 오른쪽 인덱스 구하기
 
     print(stack)
 
-다음과 같이 특정 범위에 속하는 원소의 개수를 구하는데 활용 가능
+다음과 같이 특정 범위에 속하는 원소의 개수를 구하는데 활용 가능  
 
     from bisect import bisect_left, bisect_right 
 
