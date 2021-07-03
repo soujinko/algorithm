@@ -66,3 +66,40 @@ bisect_right(literable, value) : 오른쪽 인덱스 구하기
     print(calCountsByRange(nums, 5, 7))
 
     출처: https://programming119.tistory.com/196 [개발자 아저씨들 힘을모아]
+
+
+## 백준 2110 공유기 설치
+첫 집과 마지막 집의 간격을 최대로 잡고 이분탐색으로 답을 찾아간다.
+중간 값을 인자로 함수넣어서 해당 간격으로 몇집을 돌 수 있는지 카운트를 리턴한다.
+간격의 최대값을 찾아야 하므로, getrouter(mid) 가 c보다 같거나 클 때 answer에 값을 저장해 두고 start의 값을 높인다. 나중에 또 풀어보자 ..
+
+    n, c = map(int, input().split())
+
+    array = [int(input()) for _ in range(n)]
+    array.sort()
+
+    def getrouter(gap):
+        count = 1
+        start = 0
+        for j in range(n):
+            if array[j]-array[start] >= gap:
+                count += 1
+                start = j
+
+        return count
+
+    if c == 2:
+        print (array[-1] - array[0])
+    else:
+        answer = 0
+        start = 1
+        end = array[-1] - array[0]
+        while start <= end:
+            mid = (start + end) // 2
+            if getrouter(mid) >= c:
+                answer = mid
+                start = mid + 1
+            else:
+                end = mid - 1
+
+    print(mid)
